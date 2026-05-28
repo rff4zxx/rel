@@ -266,10 +266,10 @@
       to   { opacity:1; transform:translateY(0); }
     }
 
-    @media (max-width:460px) {
-      .window { width: calc(100vw - 28px); border-radius:22px; }
-      .window-body { padding:22px 16px 20px; }
-    }
+    @media (max-width: 768px) {
+  .menubar { display: none; }
+  .desktop { padding-top: 0 !important; }
+}
   </style>
 </head>
 <body>
@@ -279,7 +279,7 @@
 
 <!-- Menubar — only Apple logo + Finder items -->
 <div class="menubar">
-  <span class="menubar-apple">&#63743;</span>
+  <img src="apple.png" alt="Apple" style="width:30px;height:32px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.88;"/>
   <div class="menubar-items">
     <span class="menubar-item bold">Finder</span>
     <span class="menubar-item">File</span>
