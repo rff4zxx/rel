@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>kyreel</title>
-  <link rel="icon" href="image.png" type="image/png"/>
+  <link rel="icon" href="" type="image/png"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -13,6 +13,62 @@
       font-family: -apple-system, 'SF Pro Display', BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
+
+    /* ── DYNAMIC BACKGROUND ── */
+.bg-orbs {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  overflow: hidden;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  opacity: 0.55;
+  animation: orbFloat ease-in-out infinite alternate;
+}
+.orb1 {
+  width: 600px; height: 600px;
+  top: -150px; left: -150px;
+  background: radial-gradient(circle, rgba(99,102,241,0.55), transparent 70%);
+  animation-duration: 14s; animation-delay: 0s;
+}
+.orb2 {
+  width: 500px; height: 500px;
+  top: -100px; right: -100px;
+  background: radial-gradient(circle, rgba(168,85,247,0.45), transparent 70%);
+  animation-duration: 18s; animation-delay: -4s;
+}
+.orb3 {
+  width: 550px; height: 550px;
+  bottom: -150px; right: -50px;
+  background: radial-gradient(circle, rgba(59,130,246,0.40), transparent 70%);
+  animation-duration: 16s; animation-delay: -8s;
+}
+.orb4 {
+  width: 400px; height: 400px;
+  bottom: -80px; left: -80px;
+  background: radial-gradient(circle, rgba(16,185,129,0.28), transparent 70%);
+  animation-duration: 20s; animation-delay: -2s;
+}
+.orb5 {
+  width: 350px; height: 350px;
+  top: 40%; left: 40%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(139,92,246,0.22), transparent 70%);
+  animation-duration: 12s; animation-delay: -6s;
+}
+@keyframes orbFloat {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(40px, -30px) scale(1.05); }
+  66%  { transform: translate(-20px, 40px) scale(0.97); }
+  100% { transform: translate(30px, 20px) scale(1.03); }
+}
+.orb5 { animation-name: orbFloat5; }
+@keyframes orbFloat5 {
+  0%   { transform: translate(-50%,-50%) scale(1); }
+  50%  { transform: translate(calc(-50% + 60px), calc(-50% - 40px)) scale(1.08); }
+  100% { transform: translate(calc(-50% - 40px), calc(-50% + 30px)) scale(0.95); }
+}
 
     /* ── WALLPAPER ── */
     body {
@@ -66,6 +122,54 @@
       font-size: 12px; font-weight: 500;
       color: rgba(255,255,255,0.82); letter-spacing: -0.2px;
     }
+
+    .menubar-apple-btn {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative;
+  z-index: 300;
+}
+.menubar-apple-btn:hover,
+.menubar-apple-btn.active { background: rgba(255,255,255,0.14); }
+
+.apple-menu {
+  position: fixed; top: 28px; left: 8px;
+  width: 262px;
+  background: rgba(28,24,52,0.82);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 10px;
+  padding: 5px 0;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+  z-index: 999;
+  display: none;
+}
+.apple-menu.show {
+  display: block;
+  animation: menuDrop 0.18s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes menuDrop {
+  from { opacity:0; transform:scale(0.95) translateY(-6px); }
+  to   { opacity:1; transform:scale(1) translateY(0); }
+}
+.apple-menu-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 5px 14px;
+  font-size: 13px; font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  cursor: default;
+  transition: background 0.1s;
+  border-radius: 5px; margin: 0 4px;
+  letter-spacing: -0.1px;
+}
+.apple-menu-item:hover { background: rgba(99,102,241,0.6); color: #fff; }
+.apple-menu-item.bold { font-weight: 600; }
+.apple-menu-item .shortcut { color: rgba(255,255,255,0.32); font-size: 12px; }
+.apple-menu-item:hover .shortcut { color: rgba(255,255,255,0.65); }
+.apple-menu-sep {
+  height: 1px; background: rgba(255,255,255,0.08); margin: 4px 0;
+}
 
     /* ── DESKTOP ── */
     .desktop {
@@ -271,6 +375,38 @@
   .menubar { display: none; }
   .desktop { padding-top: 0 !important; }
 }
+
+ .window {
+  opacity: 0;
+  transform: scale(0.82) translateY(28px);
+  filter: blur(8px);
+  animation: windowEntrance 0.40s 0.85s cubic-bezier(0.34,1.46,0.64,1) forwards;
+}
+@keyframes windowEntrance {
+  0%   { opacity:0; transform:scale(0.82) translateY(28px); filter:blur(8px); }
+  60%  { filter:blur(0px); }
+  100% { opacity:1; transform:scale(1) translateY(0); filter:blur(0px); }
+}
+
+.boot-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  background: #08061a;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+  animation: bootOut 0.5s 0.75s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.boot-logo {
+  opacity: 0;
+  animation: bootLogoIn 0.4s 0.1s ease forwards, bootLogoOut 0.3s 0.6s ease forwards;
+}
+.boot-logo svg { width: 48px; height: 48px; fill: rgba(255,255,255,0.7); }
+@keyframes bootLogoIn  { from { opacity:0; transform:scale(0.8); } to { opacity:1; transform:scale(1); } }
+@keyframes bootLogoOut { to   { opacity:0; transform:scale(1.1); } }
+@keyframes bootOut     { to   { opacity:0; } 
+
+  }
+
+
   </style>
 </head>
 <body>
@@ -278,9 +414,18 @@
 <div class="noise"></div>
 <canvas id="bg"></canvas>
 
+<div class="boot-overlay">
+  <div class="boot-logo">
+    <div>
+      <img src="apple.png" alt="Apple" style="width:58px;height:58px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.88;"/>
+    </div>
+  </div>
+</div>
+
 <!-- Menubar — only Apple logo + Finder items -->
 <div class="menubar">
-  <img src="apple.png" alt="Apple" style="width:30px;height:32px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.88;"/>
+  <img id="appleBtn" src="apple.png" alt="Apple" style="width:30px;height:32px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.88;cursor:pointer;"/>
+  
   <div class="menubar-items">
     <span class="menubar-item bold">Finder</span>
     <span class="menubar-item">File</span>
@@ -290,7 +435,32 @@
     <span class="menubar-item">Window</span>
     <span class="menubar-item">Help</span>
   </div>
+  
   <div class="menubar-right" id="clock"></div>
+</div>
+  <div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="orb orb4"></div>
+  <div class="orb orb5"></div>
+</div>
+
+  <div class="apple-menu" id="appleMenu">
+  <div class="apple-menu-item bold">About This Mac</div>
+  <div class="apple-menu-sep"></div>
+  <div class="apple-menu-item">System Settings…</div>
+  <div class="apple-menu-item">App Store… <span class="shortcut">1 update</span></div>
+  <div class="apple-menu-sep"></div>
+  <div class="apple-menu-item">Screen Saver</div>
+  <div class="apple-menu-item">Wallet & Apple Pay</div>
+  <div class="apple-menu-sep"></div>
+  <div class="apple-menu-item">Sleep</div>
+  <div class="apple-menu-item">Restart…</div>
+  <div class="apple-menu-item">Shut Down…</div>
+  <div class="apple-menu-sep"></div>
+  <div class="apple-menu-item">Lock Screen <span class="shortcut">⌃⌘Q</span></div>
+  <div class="apple-menu-item">Log Out rel.kyy… <span class="shortcut">⇧⌘Q</span></div>
 </div>
 
 <!-- Desktop -->
@@ -315,8 +485,7 @@
         </div>
         <div class="profile-name">rel.kyy</div>
         <div class="profile-bio">
-            just a normal guy, no one special about me<br/>
-            find me on media platforms
+            no one special about me<br/>
         </div>
       </div>
 
@@ -365,12 +534,27 @@
         </a>
 
       </div>
-      <div class="win-footer">© vercel host</div>
+      <div class="win-footer"></div>
     </div>
   </div>
 </div>
 
 <script>
+
+  const appleBtn  = document.getElementById('appleBtn');
+const appleMenu = document.getElementById('appleMenu');
+
+appleBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  const open = appleMenu.classList.toggle('show');
+  appleBtn.classList.toggle('active', open);
+});
+document.addEventListener('click', () => {
+  appleMenu.classList.remove('show');
+  appleBtn.classList.remove('active');
+});
+appleMenu.addEventListener('click', e => e.stopPropagation());
+
 /* ── CLOCK ── */
 function tick() {
   const n = new Date();
