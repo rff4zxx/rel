@@ -404,8 +404,18 @@
 @keyframes bootLogoOut { to   { opacity:0; transform:scale(1.1); } }
 @keyframes bootOut     { to   { opacity:0; } 
 
-  }
+}
 
+/* ── DISABLE BOOT ANIMATION ── */
+@media (max-width: 768px) {
+  .boot-overlay {
+    display: none !important;
+    animation: none !important;
+  }
+  .boot-logo {
+    animation: none !important;
+  }
+}
 
   </style>
 </head>
@@ -435,9 +445,10 @@
     <span class="menubar-item">Window</span>
     <span class="menubar-item">Help</span>
   </div>
-  
+
   <div class="menubar-right" id="clock"></div>
 </div>
+
   <div class="bg-orbs">
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
@@ -447,7 +458,7 @@
 </div>
 
   <div class="apple-menu" id="appleMenu">
-  <div class="apple-menu-item bold">About This Mac</div>
+  <div class="apple-menu-item bold" id="about-mac-btn">About Rel's</div>
   <div class="apple-menu-sep"></div>
   <div class="apple-menu-item">System Settings…</div>
   <div class="apple-menu-item">App Store… <span class="shortcut">1 update</span></div>
@@ -470,7 +481,7 @@
     <div class="titlebar" id="titlebar">
       <div class="traffic-lights">
         <div class="dot red"   ><span class="dot-icon">✕</span></div>
-        <div class="dot yellow"><span class="dot-icon">−</span></div>
+        <div class="dot yellow"><span class="dot-icon">-</span></div>
         <div class="dot green" ><span class="dot-icon">⤢</span></div>
       </div>
       <div class="titlebar-title">Profile</div>
@@ -490,7 +501,6 @@
       </div>
 
       <div class="sep"></div>
-
       <div class="links">
 
         <a class="link-btn" href="https://www.tiktok.com/@rel.kyy" target="_blank" rel="noopener noreferrer">
@@ -525,7 +535,7 @@
        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.556 4.121 1.526 5.851L.057 23.882a.5.5 0 00.606.61l6.208-1.637A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.812 9.812 0 01-5.012-1.378l-.36-.214-3.714.979.993-3.62-.234-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
     </svg>
-</div>
+        </div>
           <div class="link-info">
             <div class="link-platform">WhatsApp</div>
             <div class="link-handle">+62 821-3846-8554</div>
@@ -535,6 +545,31 @@
 
       </div>
       <div class="win-footer"></div>
+    </div>
+  </div>
+</div>
+
+ <!-- Window About -->
+  <div class="window" id="about-win" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 500;">
+  <div class="titlebar">
+    <div class="traffic-lights">
+  <div class="dot red"><span class="dot-icon">✕</span></div>
+  <div class="dot" style="background: rgba(255, 255, 255, 0.15); cursor: default;"><span class="dot-icon"></span></div>
+  <div class="dot" style="background: rgba(255, 255, 255, 0.15); cursor: default;"><span class="dot-icon"></span></div>
+</div>
+
+    <div class="titlebar-title">About</div>
+     </div>
+
+  <div class="title-sep"></div>
+
+  <div class="window-body" style="padding: 24px;">
+    <div class="profile" style="animation: none;">
+      <div class="profile-name" style="font-size: 16px;">rel</div>
+      <div class="profile-bio" style="margin-top: 10px; margin-bottom: 0; text-align: left; color: rgba(255,255,255,0.7);">
+        hi, my name is rifa'i <br/><br/>
+        i was born on feb 2011, so i'm 15yo now and currently focusing on studying. i'm an active person who loves coding, programming, and learning about tech. beyond my obsession with tech, i'm becoming an engginer
+      </div>
     </div>
   </div>
 </div>
@@ -556,20 +591,44 @@ document.addEventListener('click', () => {
 appleMenu.addEventListener('click', e => e.stopPropagation());
 
 /* ── CLOCK ── */
-function tick() {
-  const n = new Date();
-  const d = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][n.getDay()];
-  const h = n.getHours().toString().padStart(2,'0');
-  const m = n.getMinutes().toString().padStart(2,'0');
-  document.getElementById('clock').textContent = d + ' ' + h + ':' + m;
+function updateClock() {
+  const now = new Date();
+  
+  // array buat nama hari dan bulan versi singkat (ala macos)
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  
+  const dayName = days[now.getDay()];
+  const dateNum = now.getDate();
+  const monthName = months[now.getMonth()];
+  
+  // nambahin angka 0 di depan kalau jam/menit masih satuan (01, 02, dst)
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  
+  // susun sesuai format request kamu: Fri 29 May 16.39
+  const formattedTime = `${dayName} ${dateNum} ${monthName} ${hours}.${minutes}`;
+  
+  // pastiin id-nya sesuai sama yang ada di tag html menubar jam kamu yaa
+  const clockElement = document.getElementById('clock'); 
+  if (clockElement) {
+    clockElement.textContent = formattedTime;
+  }
 }
-tick(); setInterval(tick, 15000);
+// jalankan fungsinya tiap 1 detik (1000ms) biar update terus
+setInterval(updateClock, 1000);
+updateClock(); // panggil sekali di awal biar pas di-refresh ga kosongan
+
 
 /* ── DRAG WINDOW ── */
 const win = document.getElementById('win');
 const bar = document.getElementById('titlebar');
 let drag=false, ox=0, oy=0;
+
 bar.addEventListener('mousedown', e => {
+  // kalau lebar layar 768px ke bawah (mobile), jangan aktifkan drag
+  if (window.innerWidth <= 768) return;
+  
   drag=true;
   const r=win.getBoundingClientRect();
   ox=e.clientX-r.left; oy=e.clientY-r.top;
@@ -577,14 +636,15 @@ bar.addEventListener('mousedown', e => {
   win.style.position='fixed'; win.style.margin='0';
   e.preventDefault();
 });
+
 document.addEventListener('mousemove', e => {
   if(!drag) return;
   win.style.left=(e.clientX-ox)+'px';
   win.style.top =(e.clientY-oy)+'px';
   win.style.transform='none';
 });
-document.addEventListener('mouseup', ()=>{ drag=false; });
 
+document.addEventListener('mouseup', ()=>{ drag=false; });
 
 /* ── PARTICLES ── */
 const cv = document.getElementById('bg');
@@ -633,16 +693,75 @@ const ps = Array.from({length:N}, ()=>({
 window.addEventListener('mousemove', e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
 window.addEventListener('mouseleave',()=>{mouse.x=-999;mouse.y=-999;});
 
-document.getElementById('logout-btn').addEventListener('click', () => {
-  history.back();
+
+/* ── fungsi open close about this mac  ── */
+const aboutMacBtn = document.getElementById('about-mac-btn');
+const aboutWin = document.getElementById('about-win');
+const closeAboutBtn = document.querySelector('#about-win .dot.red');
+
+
+/* ── DRAG WINDOW ABOUT ── */
+const aboutTitlebar = aboutWin.querySelector('.titlebar')
+let aboutPosX = 0, aboutPosY = 0, aboutMouseX = 0, aboutMouseY = 0;
+aboutTitlebar.onmousedown = dragMouseDownAbout;
+
+function dragMouseDownAbout(e) {
+  // biar pas klik dot warna-warni ga ikut nge-drag
+  if (e.target.closest('.traffic-lights')) return;
+  e = e || window.event;
+  e.preventDefault();
+  
+  // trik biar window ga lompat pas pertama kali digeser gara-gara css transform centering
+  if (aboutWin.style.transform) {
+    const rect = aboutWin.getBoundingClientRect();
+    aboutWin.style.transform = 'none';
+    aboutWin.style.top = rect.top + 'px';
+    aboutWin.style.left = rect.left + 'px';
+  }
+  aboutMouseX = e.clientX;
+  aboutMouseY = e.clientY;
+  document.onmouseup = closeDragElementAbout;
+  document.onmousemove = elementDragAbout;
+}
+function elementDragAbout(e) {
+  e = e || window.event;
+  e.preventDefault();
+  aboutPosX = aboutMouseX - e.clientX;
+  aboutPosY = aboutMouseY - e.clientY;
+  aboutMouseX = e.clientX;
+  aboutMouseY = e.clientY;
+  aboutWin.style.top = (aboutWin.offsetTop - aboutPosY) + 'px';
+  aboutWin.style.left = (aboutWin.offsetLeft - aboutPosX) + 'px';
+}
+function closeDragElementAbout() {
+  document.onmouseup = null;
+  document.onmousemove = null;
+}
+// pas 'about this mac' diklik, window bakal muncul
+aboutMacBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  aboutWin.style.display = 'block';
+  // otomatis nutup dropdown menu apple pas window kebuka
+  document.getElementById('appleMenu').classList.remove('show');
+  document.getElementById('appleBtn').classList.remove('active');
+});
+// pas dot merah di window about diklik, window bakal ngumpet lagi
+closeAboutBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  aboutWin.style.display = 'none';
+});
+
+
+document.getElementById('restart-btn').addEventListener('click', () => {
+  location.reload();
 });
 
 document.getElementById('shutdown-btn').addEventListener('click', () => {
   history.back();
 });
 
-document.getElementById('restart-btn').addEventListener('click', () => {
-  location.reload();
+document.getElementById('logout-btn').addEventListener('click', () => {
+  history.back();
 });
 
 </script>
