@@ -417,7 +417,7 @@
 <div class="boot-overlay">
   <div class="boot-logo">
     <div>
-      <img src="apple.png" alt="Apple" style="width:58px;height:58px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.88;"/>
+      <img src="apple.png" alt="Apple" style="width:75px;height:75px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.88;"/>
     </div>
   </div>
 </div>
@@ -456,11 +456,11 @@
   <div class="apple-menu-item">Wallet & Apple Pay</div>
   <div class="apple-menu-sep"></div>
   <div class="apple-menu-item">Sleep</div>
-  <div class="apple-menu-item">Restart…</div>
-  <div class="apple-menu-item">Shut Down…</div>
+  <div class="apple-menu-item" id="restart-btn">Restart…</div>
+  <div class="apple-menu-item" id="shutdown-btn">Shut Down…</div>
   <div class="apple-menu-sep"></div>
   <div class="apple-menu-item">Lock Screen <span class="shortcut">⌃⌘Q</span></div>
-  <div class="apple-menu-item">Log Out rel.kyy… <span class="shortcut">⇧⌘Q</span></div>
+  <div class="apple-menu-item" id="logout-btn">Log Out rel.kyy… <span class="shortcut">⇧⌘Q</span></div>
 </div>
 
 <!-- Desktop -->
@@ -585,10 +585,6 @@ document.addEventListener('mousemove', e => {
 });
 document.addEventListener('mouseup', ()=>{ drag=false; });
 
-/* traffic light red = fade out/in */
-document.querySelector('.dot.red').addEventListener('click', ()=>{
-  history.back();
-});
 
 /* ── PARTICLES ── */
 const cv = document.getElementById('bg');
@@ -636,6 +632,19 @@ const ps = Array.from({length:N}, ()=>({
 
 window.addEventListener('mousemove', e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
 window.addEventListener('mouseleave',()=>{mouse.x=-999;mouse.y=-999;});
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  history.back();
+});
+
+document.getElementById('shutdown-btn').addEventListener('click', () => {
+  history.back();
+});
+
+document.getElementById('restart-btn').addEventListener('click', () => {
+  location.reload();
+});
+
 </script>
 </body>
 </html>
