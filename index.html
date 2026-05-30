@@ -134,7 +134,7 @@
 
 .apple-menu {
   position: fixed; top: 28px; left: 8px;
-  width: 262px;
+  width: 231px;
   background: rgba(28,24,52,0.82);
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
@@ -371,11 +371,6 @@
       to   { opacity:1; transform:translateY(0); }
     }
 
-    @media (max-width: 768px) {
-  .menubar { display: none; }
-  .desktop { padding-top: 0 !important; }
-}
-
  .window {
   opacity: 0;
   transform: scale(0.82) translateY(28px);
@@ -406,16 +401,23 @@
 
 }
 
-/* ── DISABLE BOOT ANIMATION ── */
-@media (max-width: 768px) {
-  .boot-overlay {
-    display: none !important;
-    animation: none !important;
-  }
-  .boot-logo {
-    animation: none !important;
-  }
-}
+/* ── MOBILE override ── */
+    @media (max-width: 768px) {
+      .menubar { display: none; }
+      .desktop { padding-top: 0 !important; }
+      .boot-overlay { display: none !important; animation: none !important; }
+      .boot-logo { animation: none !important; }
+      .window { animation: windowEntrance 0.40s 0.1s cubic-bezier(0.34,1.46,0.64,1) forwards; }
+      /* wallpaper lebih terang*/
+      body {
+        background:
+          radial-gradient(ellipse 100% 70% at 20% 20%, rgba(99,102,241,0.55) 0%, transparent 60%),
+          radial-gradient(ellipse 90% 60% at 80% 10%, rgba(168,85,247,0.45) 0%, transparent 55%),
+          radial-gradient(ellipse 80% 80% at 60% 80%, rgba(59,130,246,0.42) 0%, transparent 55%),
+          radial-gradient(ellipse 70% 50% at 10% 80%, rgba(16,185,129,0.28) 0%, transparent 50%),
+          linear-gradient(135deg, #1a1640 0%, #261858 40%, #102038 100%);
+      }
+    }
 
   </style>
 </head>
