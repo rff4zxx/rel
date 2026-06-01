@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tap the Heart 💥</title>
+  <link rel="stylesheet" href="../css/css1/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body class="page-interactive" id="pageBody">
+
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="hearts-bg" id="heartsBg"></div>
+  <div class="corner-deco tl">✿</div>
+  <div class="corner-deco tr">✿</div>
+  <div class="corner-deco bl">✿</div>
+  <div class="corner-deco br">✿</div>
+
+  <main class="page-enter">
+    <section class="interactive-section">
+      <div class="eyebrow">— chapter five —</div>
+      <h2 class="section-title">Feel the Love</h2>
+      <p class="section-sub" id="tapHint">Tap the heart and watch it burst 💥</p>
+
+      <div class="heart-stage" id="heartStage">
+        <div class="heart-ring ring-3"></div>
+        <div class="heart-ring ring-2"></div>
+        <div class="heart-ring ring-1"></div>
+        <button class="big-heart" id="bigHeart" aria-label="Tap to burst the heart">
+          <span class="heart-glyph">❤</span>
+          <span class="heart-pulse-ring"></span>
+        </button>
+        <div class="burst-particles" id="burstParticles"></div>
+      </div>
+
+      <div class="tap-counter">
+        <span id="tapCount">0</span>
+        <span class="tap-label">bursts of love</span>
+      </div>
+
+      <div class="tap-messages" id="tapMessages">
+        <span class="tap-msg" id="currentMsg">Click to begin ✨</span>
+      </div>
+
+    </section>
+  </main>
+
+  <nav class="site-nav">
+    <div class="nav-pages">
+      <span class="nav-current">05</span>
+      <span class="nav-sep">/</span>
+      <span class="nav-total">06</span>
+    </div>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="navigateTo('page4.html')">← Prev</button>
+      <button class="nav-btn" onclick="navigateTo('page6.html')">Next →</button>
+    </div>
+  </nav>
+
+  <script src="../js/js1/script.js"></script>
+</body>
+</html>

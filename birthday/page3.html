@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo Gallery 📷</title>
+  <link rel="stylesheet" href="../css/css1/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body class="page-gallery" id="pageBody">
+
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="hearts-bg" id="heartsBg"></div>
+  <div class="corner-deco tl">✿</div>
+  <div class="corner-deco tr">✿</div>
+  <div class="corner-deco bl">✿</div>
+  <div class="corner-deco br">✿</div>
+
+  <main class="page-enter">
+    <section class="gallery-section">
+      <div class="eyebrow">— chapter three —</div>
+      <h2 class="section-title">Our Gallery</h2>
+      <p class="section-sub">Frozen moments, forever warm in my heart 📸</p>
+
+      <div class="photo-grid">
+
+        <div class="photo-card tall">
+          <div class="photo-frame">
+            <img src="../assets/img/photo1.jpg" alt="Memory 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="photo-placeholder">
+              <span class="ph-icon">🌸</span>
+              <span class="ph-label">../assets/img/photo1.jpg</span>
+            </div>
+          </div>
+          <p class="photo-caption">Our very first adventure together ✨</p>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="../assets/img/photo2.jpg" alt="Memory 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="photo-placeholder">
+              <span class="ph-icon">🌺</span>
+              <span class="ph-label">../assets/img/photo2.jpg</span>
+            </div>
+          </div>
+          <p class="photo-caption">Golden hour, golden memories 🌅</p>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="../assets/img/photo3.jpg" alt="Memory 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="photo-placeholder">
+              <span class="ph-icon">☕</span>
+              <span class="ph-label">../assets/img/photo3.jpg</span>
+            </div>
+          </div>
+          <p class="photo-caption">Our little café corner 💕</p>
+        </div>
+
+        <div class="photo-card wide">
+          <div class="photo-frame">
+            <img src="../assets/img/photo4.jpg" alt="Memory 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="photo-placeholder">
+              <span class="ph-icon">🌊</span>
+              <span class="ph-label">../assets/img/photo4.jpg</span>
+            </div>
+          </div>
+          <p class="photo-caption">Chasing waves and sunsets together 🌊</p>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="../assets/img/photo5.jpg" alt="Memory 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="photo-placeholder">
+              <span class="ph-icon">🎂</span>
+              <span class="ph-label">../assets/img/photo5.jpg</span>
+            </div>
+          </div>
+          <p class="photo-caption">Sweetest celebrations 🍰</p>
+        </div>
+
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="../assets/img/photo6.jpg" alt="Memory 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="photo-placeholder">
+              <span class="ph-icon">🌙</span>
+              <span class="ph-label">../assets/img/photo6.jpg</span>
+            </div>
+          </div>
+          <p class="photo-caption">Stargazing until morning 🌟</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <nav class="site-nav">
+    <div class="nav-pages">
+      <span class="nav-current">03</span>
+      <span class="nav-sep">/</span>
+      <span class="nav-total">06</span>
+    </div>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="navigateTo('page2.html')">← Prev</button>
+      <button class="nav-btn" onclick="navigateTo('page4.html')">Next →</button>
+    </div>
+  </nav>
+
+  <script src="../js/js1/script.js"></script>
+</body>
+</html>

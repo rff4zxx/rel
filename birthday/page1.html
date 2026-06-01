@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 🎀 — Welcome</title>
+  <link rel="stylesheet" href="../css/css1/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body class="page-welcome" id="pageBody">
+
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <div class="corner-deco tl">✿</div>
+  <div class="corner-deco tr">✿</div>
+  <div class="corner-deco bl">✿</div>
+  <div class="corner-deco br">✿</div>
+
+  <main class="page-enter">
+    <section class="welcome-hero">
+      <div class="eyebrow">— a birthday surprise —</div>
+      <h1 class="welcome-title">
+        <span class="title-line">Happy</span>
+        <span class="title-line italic">Birthday</span>
+      </h1>
+      <div class="name-ribbon">
+        <span class="ribbon-dash">❧</span>
+        <span class="recipient">My Dearest</span>
+        <span class="ribbon-dash">❧</span>
+      </div>
+      <p class="welcome-copy">
+        I made this little world just for you.<br>
+        Step inside — every page holds a piece of my heart. 💕
+      </p>
+      <div class="welcome-cta">
+        <button class="btn-primary" onclick="navigateTo('page2.html')">
+          Begin the Journey
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+      <div class="scroll-hint">6 pages of love await you</div>
+    </section>
+  </main>
+
+  <nav class="site-nav">
+    <div class="nav-pages">
+      <span class="nav-current">01</span>
+      <span class="nav-sep">/</span>
+      <span class="nav-total">06</span>
+    </div>
+    <div class="nav-btns">
+      <button class="nav-btn disabled" disabled>← Prev</button>
+      <button class="nav-btn" onclick="navigateTo('page2.html')">Next →</button>
+    </div>
+  </nav>
+
+  <script src="../js/js1/script.js"></script>
+</body>
+</html>
