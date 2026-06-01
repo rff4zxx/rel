@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/HappyBirthDay",
+      "destination": "/HappyBirthDay/page1.html"
+    }
+  ]
+}
