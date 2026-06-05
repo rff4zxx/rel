@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Macintosh</title>
+  <link rel="icon" href="null" type="image/png"/>
+  
+  <link rel="stylesheet" href="../css/css1/style.css">
+</head>
+<body>
+
+<div class="noise"></div>
+<canvas id="bg"></canvas>
+
+<div class="boot-overlay">
+  <div class="boot-logo">
+    <div>
+      <img src="../assets/img/apple.png" alt="Apple" style="width:85px;height:85px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.88;"/>
+    </div>
+  </div>
+</div>
+
+<div class="menubar">
+  <img id="appleBtn" src="../assets/img/apple.png" alt="Apple" style="width:31px;height:33px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.88;cursor:pointer;"/>
+  
+  <div class="menubar-items">
+    <span class="menubar-item bold">Finder</span>
+    <span class="menubar-item">File</span>
+    <span class="menubar-item">Edit</span>
+    <span class="menubar-item">View</span>
+    <span class="menubar-item">Go</span>
+    <span class="menubar-item">Window</span>
+    <span class="menubar-item">Help</span>
+  </div>
+
+  <div class="menubar-right" id="clock"></div>
+</div>
+
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="orb orb4"></div>
+  <div class="orb orb5"></div>
+</div>
+
+<div class="apple-menu" id="appleMenu">
+  <div class="apple-menu-item bold" id="about-mac-btn">About This Mac</div>
+  <div class="apple-menu-item" id="profile-btn">Profile…</div>
+  <div class="apple-menu-sep"></div>
+  <div class="apple-menu-item" id="system-settings-btn">System Settings…</div>
+  <div class="apple-menu-item">App Store… <span class="shortcut">1 update</span></div>
+  <div class="apple-menu-sep"></div>
+  <div class="apple-menu-item">Screen Saver</div>
+  <div class="apple-menu-item">Wallet & Apple Pay</div>
+  <div class="apple-menu-sep"></div>
+  <div class="apple-menu-item">Sleep</div>
+  <div class="apple-menu-item" id="restart-btn">Restart…</div>
+  <div class="apple-menu-item" id="shutdown-btn">Shut Down…</div>
+  <div class="apple-menu-sep"></div>
+  <div class="apple-menu-item">Lock Screen <span class="shortcut">⌃⌘Q</span></div>
+  <div class="apple-menu-item">Log Out rel.kyy… <span class="shortcut">⇧⌘Q</span></div>
+</div>
+
+<div class="desktop">
+  <div class="window" id="win" style="display:none;">
+    <div class="titlebar" id="titlebar">
+      <div class="traffic-lights">
+        <div class="dot red" id="close-profile-btn"><span class="dot-icon">✕</span></div>
+        <div class="dot yellow"><span class="dot-icon">-</span></div>
+        <div class="dot green" ><span class="dot-icon">⤢</span></div>
+      </div>
+      <div class="titlebar-title">Profile</div>
+    </div>
+
+    <div class="title-sep"></div>
+
+    <div class="window-body">
+      <div class="profile">
+        <div class="avatar" id="avatar">
+             <img src="../assets/img/avatar.png" alt="foto"/>
+        </div>
+        <div class="profile-name">rel.kyy</div>
+        <div class="profile-bio">
+            no one special about me<br/>
+        </div>
+      </div>
+
+      <div class="sep"></div>
+      <div class="links">
+        <a class="link-btn" href="https://www.tiktok.com/@rel.kyy" target="_blank" rel="noopener noreferrer">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.75a8.27 8.27 0 004.84 1.55V6.84a4.85 4.85 0 01-1.07-.15z" fill="rgba(255,255,255,0.82)"/></svg>
+          </div>
+          <div class="link-info">
+            <div class="link-platform">TikTok</div>
+            <div class="link-handle">@rel.kyy</div>
+          </div>
+          <svg class="arrow" width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+
+        <a class="link-btn" href="https://www.instagram.com/rel.kyy" target="_blank" rel="noopener noreferrer">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="20" height="20" rx="6" stroke="rgba(255,255,255,0.82)" stroke-width="2"/>
+              <circle cx="12" cy="12" r="4" stroke="rgba(255,255,255,0.82)" stroke-width="2"/>
+              <circle cx="17.5" cy="6.5" r="1.2" fill="rgba(255,255,255,0.82)"/>
+            </svg>
+          </div>
+          <div class="link-info">
+            <div class="link-platform">Instagram</div>
+            <div class="link-handle">@rel.kyy</div>
+          </div>
+          <svg class="arrow" width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="win-footer"></div>
+    </div>
+  </div>
+</div>
+
+<div class="window atm-win" id="about-win" style="display:none; position:fixed; z-index:500; width:340px;">
+  <div class="titlebar" id="about-titlebar">
+    <div class="traffic-lights">
+      <div class="dot red" id="close-about-btn"><span class="dot-icon">✕</span></div>
+      <div class="dot atm-gray" style="cursor:default;"><span class="dot-icon"></span></div>
+      <div class="dot atm-gray" style="cursor:default;"><span class="dot-icon"></span></div>
+    </div>
+    <div class="titlebar-title">About This Mac</div>
+  </div>
+  <div class="title-sep"></div>
+  <div class="atm-body">
+    <!-- MacBook image -->
+    <div class="atm-laptop-wrap">
+      <img src="../assets/img/macbook.png" alt="MacBook Pro" class="atm-laptop"/>
+    </div>
+
+    <div class="atm-model">MacBook Pro</div>
+    <div class="atm-sub">13-inch, 2020, Two Thunderbolt </div>
+
+    <div class="atm-specs">
+      <div class="atm-row">
+        <span class="atm-label">Processor</span>
+        <span class="atm-val">Apple M1</span>
+      </div>
+      <div class="atm-row">
+        <span class="atm-label">Graphics</span>
+        <span class="atm-val">Apple M1</span>
+      </div>
+      <div class="atm-row">
+        <span class="atm-label">Memory</span>
+        <span class="atm-val">8 GB LPDDR3</span>
+      </div>
+      <div class="atm-row">
+        <span class="atm-label">macOS</span>
+        <span class="atm-val">Tahoe 26.1</span>
+      </div>
+    </div>
+
+    <button class="atm-more-btn">More Info…</button>
+
+    <div class="atm-footer">
+      Regulatory Certification™ <br/>
+      and © 1983–2026 Apple Inc. All Rights Reserved.
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="mobile-warning">
+  <p>turn on desktop mode for the full experience.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="../js/js1/script.js"></script>
+</body>
+</html>
