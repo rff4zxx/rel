@@ -1,0 +1,12 @@
+{
+  "name": "rel",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.png?v=2",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
